@@ -17,7 +17,7 @@ const GenerationDetails = ({region}) => {
     
 
     return(
-        <div>
+        <div className="detail-box-dynamic">
         <p>This is the generation list:</p>
         <ul>{generationdetail}</ul>
         </div>

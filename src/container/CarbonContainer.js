@@ -33,11 +33,11 @@ const CarbonContainer = ({match}) => {
         <Router>
         <>
             <NavBar />
+            <CarbonRegions regions={regions} onSelectRegion={handleSelectedRegion}/>
             <Switch>
                 <Route exact path="/" component={HomePage} />
-                <Route exact path="/regions" exact render={() => <CarbonRegions regions={regions} onSelectRegion={handleSelectedRegion}/>}/>
-                <Route path="/regions/$regionid" render={routerProps => <RegionDetails {...routerProps} region={selectedRegion}/>}/>
-                <Route path="/generation" exact render={() => <GenerationRegions regions={regions} onSelectRegion={handleSelectedRegion}/> }/>
+                <Route path="/$regionid" render={routerProps => <RegionDetails {...routerProps} region={selectedRegion}/>}/>
+                <Route path="/generation/$regionid" render={routerProps => <GenerationDetails {...routerProps} region={selectedRegion}/> }/>
                 <Route component={ErrorPage} />
             </Switch>
         </>
