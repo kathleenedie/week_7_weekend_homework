@@ -1,25 +1,36 @@
 * {
-  background-color: beige;
+  background-color: darkslategrey;
 
 }
 
 .app {
   display: grid;
-  grid-template-columns: 300px 1fr 1fr;
+  grid-template-columns: 300px 1fr;
   grid-template-rows: 100px 1fr 1fr 100px;
   grid-gap: 10px;
   margin: 15px;
+  background-color: darkslategrey;
 }
 
 .navbar {
   grid-column-start: 2;
   grid-column-end: 4;
+
   border: 5px solid darkgray;
   padding: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.navbar > li {
+.nav-list{
   list-style: none;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
 }
 
 .regions {
@@ -41,15 +52,41 @@
   align-items: center;
 }
 
+.region-list-item:hover .region-link:hover {
+  background: gray;
+  font-size: 1.2em;
+}
+
+.region-link {
+  text-decoration: none;
+  color: white;
+}
+
+
 .gen-icon {
   margin-right: 15px;
 }
 
+.gen-icon:hover {
+  opacity: 0.6;
+  background-color: #CDD4BF;
+
+  
+}
+
 .detail-box-dynamic{
   grid-column-start: 2;
-  grid-column-end: 3;
+  grid-column-end: 4;
   grid-row-start: 2;
   grid-row-end: 2;
+  margin: 30px;
   border: 5px solid darkgray;
   padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+
 }

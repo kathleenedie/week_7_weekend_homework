@@ -1,4 +1,6 @@
 import React from 'react';
+import Pie from 'chart.js'
+
 
 const GenerationDetails = ({region}) => {
 
@@ -14,7 +16,17 @@ const GenerationDetails = ({region}) => {
         )
     })
 
-    
+    const fuel = region.generationmix.map((mix, index) => {
+        return(mix.fuel)
+        
+    })
+    console.log(fuel)
+
+    const perc = region.generationmix.map((mix, index) => {
+        return(mix.perc)
+    })
+    console.log(perc)
+
 
     return(
         <div className="detail-box-dynamic">

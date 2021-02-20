@@ -7,12 +7,14 @@ import GenerationDetails from '../component/GenerationDetails';
 import NavBar from '../component/NavBar';
 import ErrorPage from '../component/ErrorPage';
 import HomePage from '../component/HomePage';
+import ChartTest from '../component/ChartTest';
 
 
 const CarbonContainer = ({match}) => {
 
     const [regions, setRegions] = useState([]);
     const [selectedRegion, setSelectedRegion] = useState(null);
+    const [detailUK, setDetailUK] = useState(null);
 
     const getRegions = () => {
         console.log("getting the places data...");
@@ -29,6 +31,7 @@ const CarbonContainer = ({match}) => {
         setSelectedRegion(region)
     }
 
+
     return (
         <Router>
         <>
@@ -37,7 +40,8 @@ const CarbonContainer = ({match}) => {
             <Switch>
                 <Route exact path="/" component={HomePage} />
                 <Route path="/$regionid" render={routerProps => <RegionDetails {...routerProps} region={selectedRegion}/>}/>
-                <Route path="/generation/$regionid" render={routerProps => <GenerationDetails {...routerProps} region={selectedRegion}/> }/>
+                <Route path="/generation/$regionid" render={routerProps => <GenerationDetails {...routerProps} region={selectedRegion} regions={regions}/> }/>
+                <Route path="/chart" render={() => <ChartTest/> } />
                 <Route component={ErrorPage} />
             </Switch>
         </>
