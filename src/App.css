@@ -1,5 +1,5 @@
 * {
-  background-color: darkslategrey;
+  background-color: rgb(78, 60, 23);
 
 }
 
@@ -9,19 +9,24 @@
   grid-template-rows: 100px 1fr 1fr 100px;
   grid-gap: 10px;
   margin: 15px;
-  background-color: darkslategrey;
+  background-image: url('power.png');
+  background-size: cover;
 }
 
 .navbar {
   grid-column-start: 2;
   grid-column-end: 4;
 
-  border: 5px solid darkgray;
+  border: 5px solid white;
   padding: 5px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.title {
+  color: white;
 }
 
 .nav-list{
@@ -39,7 +44,7 @@
   grid-row-start: 2;
   grid-row-end: 4;
 
-  border: 5px solid darkgray;
+  border: 5px solid white;
   margin-left: 10px;
 }
 
@@ -53,7 +58,7 @@
 }
 
 .region-list-item:hover .region-link:hover {
-  background: gray;
+  background: rgb(197, 163, 100);
   font-size: 1.2em;
 }
 
@@ -80,7 +85,7 @@
   grid-row-start: 2;
   grid-row-end: 2;
   margin: 30px;
-  border: 5px solid darkgray;
+  border: 5px solid white;
   padding: 10px;
 
   display: flex;
@@ -90,3 +95,7 @@
   color: white;
 
 }
+
+.int-index[int-index="Intensity Index: very low"]:after {
+  color: orange;
+ }

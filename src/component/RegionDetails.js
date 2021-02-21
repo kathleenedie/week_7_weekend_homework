@@ -12,7 +12,7 @@ const RegionDetails = ({region}) => {
         <div className="detail-box-dynamic">
             <h4>Region: {region.shortname}</h4>
             <p>Company: {region.dnoregion}</p>
-            <p>Index: {region.intensity.index}</p>
+            <p className="int-index">Intensity Index: {region.intensity.index}</p>
             <p>Forecast: {region.intensity.forecast}</p>
         </div>
     )
