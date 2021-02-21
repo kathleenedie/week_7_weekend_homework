@@ -4,14 +4,14 @@ import pylon from '../pylon.png';
 import chart from '../chart.png';
 
 
-const CarbonRegions = ({regions, onSelectRegion}) => {
+const CarbonRegions = ({regions, index, onSelectRegion}) => {
 
     const carbonRegionList = regions.map((region) => {
         return(
         <>
             <li className="region-list-item">
 
-            <Link className="gen-icon" key={region.regionid} to={'/generation/$regionid'} 
+            <Link className="gen-icon" key={region.index} to={'/generation/$regionid'} 
             onClick={() => {onSelectRegion(region)}} ><img src={pylon} height="50" ></img></Link>
 
             <Link className="region-link" key={region.regionid} to={'/$regionid'} 

@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import CarbonRegions from '../component/CarbonRegions';
 import RegionDetails from '../component/RegionDetails';
-import GenerationRegions from '../component/GenerationRegions';
 import GenerationDetails from '../component/GenerationDetails';
 import NavBar from '../component/NavBar';
 import ErrorPage from '../component/ErrorPage';
@@ -36,6 +35,7 @@ const CarbonContainer = () => {
     }
 
     const chart = () => {
+        console.log("chart is coming...");
         setChartData({
             labels: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
             datasets: [
@@ -63,8 +63,8 @@ const CarbonContainer = () => {
                 <Route path="/$regionid" render={routerProps => 
                     <RegionDetails {...routerProps} region={selectedRegion}/>}/>
                 <Route path="/generation/$regionid" render={routerProps => 
-                    <GenerationDetails {...routerProps} region={selectedRegion} regions={regions} chartData={chartData} setChartData={setChartData}/> }/>
-                <Route path="/chart" render={() => <Pie chartData={chartData} /> }/>
+                    <GenerationDetails {...routerProps} region={selectedRegion} regions={regions} chartData={chartData}/> }/>
+                <Route path="/chart" render={() => <Pie data={chartData} region={selectedRegion} /> }/>
                 <Route component={ErrorPage} />
             </Switch>
         </>
