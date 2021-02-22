@@ -1,8 +1,10 @@
 import React from 'react';
-import Pie from 'react-chartjs-2'
+import Pie, { defaults } from 'react-chartjs-2'
+import { withRouter } from 'react-router-dom';
 
+defaults.global.legend.position = 'left';
 
-const GenerationDetails = ({region, chartData, setChartData}) => {
+const GenerationDetails = ({region}) => {
 
     if(!region){
         return(null)
@@ -15,26 +17,6 @@ const GenerationDetails = ({region, chartData, setChartData}) => {
         </>
         )
     })
-
-    const ChartTest = () => {
-        setChartData({
-            width: 300,
-            height: 300,
-            type: 'pie',
-            labels: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
-            datasets: [
-                {
-                    label: 'level of thickness',
-                    data: [32, 45, 12, 76, 69],
-                    backgroundColor: [
-                        'rgba(75, 192, 192, 0.6)',
-                        'rgba(255, 25, 104, 0.6'
-                    ],
-                    borderWidth: 4
-                }
-            ]
-        })
-    }
 
     const fuel = region.generationmix.map((mix, index) => {
         return(mix.fuel)
@@ -50,10 +32,41 @@ const GenerationDetails = ({region, chartData, setChartData}) => {
 
     return(
         <div className="detail-box-dynamic">
-            <p>This is the generation list:</p>
-            <ul>{generationdetail}</ul>
-            <p>This is a table</p>
-            <Pie chartData={chartData}/>
+
+            <p>How power is generated in: {region.shortname}</p>
+            <Pie 
+                data={{
+                    labels: fuel,
+                        datasets: [
+                        {
+                            label: 'percentage generated',
+                            data: perc,
+                            backgroundColor: [
+                                'rgb(247, 127, 0)',
+                                'rgb(107, 44, 57)',
+                                'rgb(161, 42, 49',
+                                'rgb(214, 40, 40)',
+                                'rgb(231, 84, 20)',
+                                'rgb(0, 48, 73)',
+                                'rgb(252, 191, 73)',
+                                'rgb(243, 209, 128)',
+                                'rgb(234, 226, 183)'
+                                ]
+                        }
+                    ]
+                }}
+                options={{
+                    maintainAspectRatio: false,
+                    legend: {
+                        labels:{
+                            fontSize: 15,
+                            fontColor: 'white',
+                        },
+                    }
+                }}
+                
+                />
+            
         </div>
     )
 }

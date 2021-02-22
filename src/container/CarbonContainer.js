@@ -13,7 +13,7 @@ const CarbonContainer = () => {
 
     const [regions, setRegions] = useState([]);
     const [selectedRegion, setSelectedRegion] = useState(null);
-    const [chartData, setChartData] = useState([]);
+
 
     const getRegions = () => {
         console.log("getting the places data...");
@@ -26,31 +26,10 @@ const CarbonContainer = () => {
         getRegions();
     },[]);
 
-    useEffect (() => {
-        chart()
-    }, [])
-
     const handleSelectedRegion = (region) => {
         setSelectedRegion(region)
     }
 
-    const chart = () => {
-        console.log("chart is coming...");
-        setChartData({
-            labels: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
-            datasets: [
-                {
-                    label: 'level of thickness',
-                    data: [32, 45, 12, 76, 69],
-                    backgroundColor: [
-                        'rgba(75, 192, 192, 0.6)',
-                        'rgba(255, 25, 104, 0.6'
-                    ],
-                    borderWidth: 4
-                }
-            ]
-        })
-    }
 
 
     return (
@@ -63,8 +42,7 @@ const CarbonContainer = () => {
                 <Route path="/$regionid" render={routerProps => 
                     <RegionDetails {...routerProps} region={selectedRegion}/>}/>
                 <Route path="/generation/$regionid" render={routerProps => 
-                    <GenerationDetails {...routerProps} region={selectedRegion} regions={regions} chartData={chartData}/> }/>
-                <Route path="/chart" render={() => <Pie data={chartData} region={selectedRegion} /> }/>
+                    <GenerationDetails {...routerProps} region={selectedRegion} regions={regions}/>}/>
                 <Route component={ErrorPage} />
             </Switch>
         </>
